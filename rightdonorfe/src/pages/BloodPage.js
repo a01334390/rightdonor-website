@@ -18,6 +18,8 @@ import axios from 'axios'
 /** Components */
 import Create from '../components/blood/create'
 import Assign from '../components/blood/assign'
+import Read from '../components/blood/read'
+import History from '../components/blood/history'
 
 class App extends React.Component {
     state = {
@@ -73,8 +75,8 @@ class App extends React.Component {
                     </Flex>
                     {this.state.method === 3 && <Create></Create>}
                     {this.state.method === 4 && <Assign></Assign>}
-                    {this.state.method === 5 && <Heading> 5 </Heading>}
-                    {this.state.method === 6 && <Heading> 6 </Heading>}
+                    {this.state.method === 5 && <Read></Read>}
+                    {this.state.method === 6 && <History></History>}
                 </ThemeProvider>
             </>
         )

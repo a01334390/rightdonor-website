@@ -90,7 +90,7 @@ class Assign extends React.Component {
                         </Flex>
                         <Box px={2} ml='auto'>
                             <Button onClick={this.handleSubmit}>
-                                Create
+                                Assign
                             </Button>
                         </Box>
                     </Box>

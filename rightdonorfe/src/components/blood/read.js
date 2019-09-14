@@ -6,6 +6,7 @@ import { ThemeProvider } from 'emotion-theming'
 import theme from '@rebass/preset'
 import {
     Heading,
+    Text,
     Button,
     Box,
     Flex
@@ -17,12 +18,12 @@ import {
 /** Axios */
 import axios from 'axios'
 
-class Assign extends React.Component {
+class Read extends React.Component {
     state = {
         user: {},
         bagId: "",
-        recipient: "",
-        destination: ""
+        response: {},
+        show: false
     }
 
     componentDidMount = async () => {
@@ -32,13 +33,11 @@ class Assign extends React.Component {
     }
 
     handleSubmit = () => {
-        axios.post('https://api.rightdonor.org/prod/blood/assign/'
+        axios.get('https://api.rightdonor.org/prod/blood/read/'
         +this.state.bagId+'/'
-        +this.state.recipient+'/'
-        +this.state.destination+'/'
         +'user1')
         .then((res)=>{
-            alert(JSON.stringify(res))
+            this.setState({response: res.data, show: true})
         })
         .catch((error)=>{
             alert(JSON.stringify(error))
@@ -49,7 +48,7 @@ class Assign extends React.Component {
         return (
             <>
                 <ThemeProvider theme={theme}>
-                    <Heading fontSize={[3, 4, 5]}> Assign Blood Bag </Heading>
+                    <Heading fontSize={[3, 4, 5]}> Read Blood Bag </Heading>
                     <Box
                         py={3}>
                         <Flex mx={-2} mb={3}>
@@ -63,41 +62,31 @@ class Assign extends React.Component {
                                     value={this.state.bagId}
                                 />
                             </Box>
-                            <Box width={1 / 2} px={2}>
-                                <Label htmlFor='recipient'>Bag recipient</Label>
-                                <Input
-                                    id='recipient'
-                                    name='recipient'
-                                    defaultValue='1234'
-                                    onChange={(event) => this.setState({recipient: event.target.value})}
-                                    value={this.state.recipient}
-                                />
-                            </Box>
-                        </Flex>
-                        <Flex mx={-2} mb={3}>
-                            
-                            <Box width={1 / 2} px={2}>
-                                <Label htmlFor='destination'>Bag Destination</Label>
-                                <Input
-                                    id='destination'
-                                    name='destination'
-                                    defaultValue='650'
-                                    onChange={(event) => this.setState({destination: event.target.value})}
-                                    value={this.state.destination}
-                                />
-                            </Box>
-
                         </Flex>
                         <Box px={2} ml='auto'>
                             <Button onClick={this.handleSubmit}>
-                                Create
+                                Read
                             </Button>
                         </Box>
                     </Box>
+                    {this.state.show &&
+                        <Box>
+                            <Heading> ID: {this.state.response.id }</Heading>
+                            <Text> Blood Type: {this.state.response.type}</Text>
+                            <Text> Blood RH: {this.state.response.rh}</Text>
+                            <Text> Blood Origin ID: {this.state.response.originId}</Text>
+                            <Text> Blood Location ID: {this.state.response.location}</Text>
+                            <Text> Blood Status: {this.state.response.status}</Text>
+                            <Text> Blood Recipient: {this.state.response.recipient}</Text>
+                            <Text> Blood Destination: {this.state.response.destination}</Text>
+                            <Text> Blood Size: {this.state.response.size}</Text>
+                        </Box>
+                    }
+                    
                 </ThemeProvider>
             </>
         )
     }
 }
 
-export default Assign
+export default Read
