@@ -33,7 +33,7 @@ class Read extends React.Component {
 
     handleSubmit = () => {
         axios.post('https://api.rightdonor.org/prod/rewards/receive/'
-        +this.state.bagId+'/'
+        +this.state.user+'/'
         +this.state.receive+'/'
         +'user1')
         .then((res)=>{
