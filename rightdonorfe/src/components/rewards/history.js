@@ -23,13 +23,13 @@ class Create extends React.Component {
 
     componentDidMount = async () => {
         this.setState({
-            user: await Auth.currentAuthenticatedUser().username
+            user: await Auth.currentAuthenticatedUser()
         })
     }
 
     handleSubmit = () => {
-        axios.get('https://api.rightdonor.org/prod/rewards/history/'
-        +this.state.user+'/'
+        axios.get('http://3.222.166.83/rewards/history/'
+        +this.state.user.username+'/'
         +'user1')
         .then((res)=>{
             this.setState({response: res.data,show: true})
@@ -55,9 +55,9 @@ class Create extends React.Component {
                     {this.state.show &&
                     this.state.response.map(rewards => (
                         <Card key={rewards.id}>
-                            <Heading> TxId: {rewards.id}</Heading>
-                            <Text> Account level: {rewards.level}</Text>
-                            <Text> Account tokens: {rewards.tokens}</Text>
+                            <Heading> TxId: {rewards.TxId}</Heading>
+                            <Text> Account level: {rewards.Value.level}</Text>
+                            <Text> Account tokens: {rewards.Value.tokens}</Text>
                         </Card>
                     ))}
                 </ThemeProvider>

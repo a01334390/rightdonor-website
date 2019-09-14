@@ -34,7 +34,7 @@ class History extends React.Component {
     }
 
     handleSubmit = () => {
-        axios.get('https://api.rightdonor.org/prod/blood/history/'
+        axios.get('http://3.222.166.83/blood/history/'
         +this.state.bagId+'/'
         +'user1')
         .then((res)=>{

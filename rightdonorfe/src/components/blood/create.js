@@ -35,7 +35,7 @@ class Create extends React.Component {
     }
 
     handleSubmit = () => {
-        axios.post('https://api.rightdonor.org/prod/blood/create/'
+        axios.post('http://3.222.166.83/blood/create/'
         +this.state.bagId+'/'
         +this.state.bagOriginId+'/'
         +this.state.bagOriginId+'/'

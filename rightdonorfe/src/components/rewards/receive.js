@@ -27,13 +27,13 @@ class Read extends React.Component {
 
     componentDidMount = async () => {
         this.setState({
-            user: await Auth.currentAuthenticatedUser().username
+            user: await Auth.currentAuthenticatedUser()
         })
     }
 
     handleSubmit = () => {
-        axios.post('https://api.rightdonor.org/prod/rewards/receive/'
-        +this.state.user+'/'
+        axios.post('http://3.222.166.83/rewards/receive/'
+        +this.state.user.username+'/'
         +this.state.receive+'/'
         +'user1')
         .then((res)=>{

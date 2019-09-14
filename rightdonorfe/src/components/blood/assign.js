@@ -32,7 +32,7 @@ class Assign extends React.Component {
     }
 
     handleSubmit = () => {
-        axios.post('https://api.rightdonor.org/prod/blood/assign/'
+        axios.post('http://3.222.166.83/blood/assign/'
         +this.state.bagId+'/'
         +this.state.recipient+'/'
         +this.state.destination+'/'

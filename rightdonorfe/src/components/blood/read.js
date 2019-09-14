@@ -33,7 +33,7 @@ class Read extends React.Component {
     }
 
     handleSubmit = () => {
-        axios.get('https://api.rightdonor.org/prod/blood/read/'
+        axios.get('http://3.222.166.83/blood/read/'
         +this.state.bagId+'/'
         +'user1')
         .then((res)=>{

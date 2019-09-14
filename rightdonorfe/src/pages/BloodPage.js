@@ -37,7 +37,7 @@ class App extends React.Component {
         this.setState({method: code})
         switch(code){
             case 1:
-                axios.post('https://api.rightdonor.org/prod/enroll')
+                axios.post('http://3.222.166.83/enroll')
                 .then((res)=>{
                     alert('Admin was enrolled!')
                 })
@@ -46,7 +46,7 @@ class App extends React.Component {
                 })
             break
             case 2:
-                axios.post('https://api.rightdonor.org/prod/user')
+                axios.post('http://3.222.166.83/user')
                 .then((res)=>{
                     alert('User was enrolled')
                 })

@@ -19,19 +19,19 @@ class Create extends React.Component {
 
     componentDidMount = async () => {
         this.setState({
-            user: await Auth.currentAuthenticatedUser().username
+            user: await Auth.currentAuthenticatedUser()
         })
     }
 
     handleSubmit = () => {
-        axios.post('https://api.rightdonor.org/prod/rewards/create/'
-        +this.state.user+'/'
+        axios.post('http://3.222.166.83/rewards/create/'
+        +this.state.user.username+'/'
         +'user1')
         .then((res)=>{
-            alert(res)
+            alert(JSON.stringify(res))
         })
         .catch((error)=>{
-            alert(error)
+            alert(JSON.stringify(error.data.message))
         })
     }
 
