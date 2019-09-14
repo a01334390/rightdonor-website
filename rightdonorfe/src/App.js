@@ -14,6 +14,7 @@ import { withAuthenticator } from 'aws-amplify-react';
 /** Pages */
 import Homepage from './pages/HomePage'
 import Bloodpage from './pages/BloodPage'
+import Rewardspage from './pages/RewardPage'
 
 /** Context */
 export const history = createBrowserHistory()
@@ -52,6 +53,10 @@ class App extends React.Component {
         {/** Blood Operations */}
         <Route path="/blood" component={
           () => <Bloodpage/>
+        }/>
+        {/**Rewards Operations */}
+        <Route path="/rewards" component={
+          () => <Rewardspage/>
         }/>
       </Router>
     )

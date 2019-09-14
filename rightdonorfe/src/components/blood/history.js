@@ -38,7 +38,6 @@ class History extends React.Component {
         +this.state.bagId+'/'
         +'user1')
         .then((res)=>{
-            alert(JSON.stringify(res.data))
             this.setState({response: res.data, show: true})
         })
         .catch((error)=>{
